@@ -16,8 +16,18 @@ if [[ ! -f "$TASKRC" ]]; then
     echo "yes" | task || true
 fi
 
+# Start taskwarrior-web
 cd $HOME/bin
 exec ./taskwarrior-web &
-pid=$!
-trap 'kill -SIGTERM $pid; wait $pid' SIGTERM
-wait $pidh
+
+# Set up task sync to run every 3 mins
+while true; do /usr/bin/task sync; sleep 180; done &
+# pid=$!
+# trap 'kill -SIGTERM $pid; wait $pid' SIGTERM
+# wait $pid
+
+# Wait for any process to exit
+wait -n
+
+# Exit with status of process that exited first
+exit $?
