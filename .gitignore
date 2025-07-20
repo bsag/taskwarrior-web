@@ -31,3 +31,6 @@ dist-ssr
 /frontend/package-lock.json
 /lcov.info
 /coverage
+.direnv
+package-lock.json
+package.json

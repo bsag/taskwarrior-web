@@ -1,5 +1,4 @@
 #![feature(exit_status_error)]
-#![feature(let_chains)]
 
 use std::collections::HashMap;
 use std::fmt;
