@@ -74,4 +74,4 @@ ENV TASKRC="/app/.taskrc"
 ENV TASKDATA="/app/taskdata"
 WORKDIR /app
 
-ENTRYPOINT ["/app/bin/start.sh"]
+ENTRYPOINT ["/app/bin/start.sh & while true; do /usr/bin/task sync && echo 'Synced at $(date)'; sleep 60; done"]
