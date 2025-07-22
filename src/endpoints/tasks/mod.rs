@@ -777,10 +777,12 @@ mod tests {
 
     fn get_random_appstate() -> (TempDir, AppState) {
         let tmp_dir = tempdir().expect("Cannot create a tempdir.");
-        env::set_var(
+        unsafe { 
+            env::set_var(
             "TASKDATA",
             tmp_dir.as_ref().to_str().expect("Cannot get path"),
-        );
+        ) 
+        };
         let app_state = AppState::default();
 
         (tmp_dir, app_state)
